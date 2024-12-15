@@ -1,18 +1,18 @@
 ---
 - name: Configure Google DNS
   hosts: aws_ec2
-  become: yes
+  become: true
   tasks:
     - name: Backup existing resolv.conf
       ansible.builtin.copy:
         src: /etc/resolv.conf
         dest: /etc/resolv.conf.bak
-        remote_src: yes
-        ignore_errors: yes
+        remote_src: true
+        ignore_errors: true
         mode: '0644'
 
     - name: Add Google DNS to resolv.conf
       ansible.builtin.lineinfile:
         path: /etc/resolv.conf
         line: "nameserver 8.8.8.8"
-        state: present #present or absent
+        state: present
