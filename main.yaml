@@ -4,14 +4,15 @@
   become: yes
   tasks:
     - name: Backup existing resolv.conf
-      copy:
+      ansible.builtin.copy:
         src: /etc/resolv.conf
         dest: /etc/resolv.conf.bak
         remote_src: yes
         ignore_errors: yes
- 
+        mode: '0644'
+
     - name: Add Google DNS to resolv.conf
-      lineinfile:
+      ansible.builtin.lineinfile:
         path: /etc/resolv.conf
         line: "nameserver 8.8.8.8"
         state: present #present or absent
