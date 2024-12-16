@@ -13,5 +13,13 @@
     - name: Add Google DNS to resolv.conf
       ansible.builtin.lineinfile:
         path: /etc/resolv.conf
-        line: "nameserver 8.8.8.8"
+        line: "google 8.8.8.8"
         state: present
+    
+      - name: Verify changes in resolv.conf
+        ansible.builtin.shell: cat /etc/resolv.conf
+        register: resolv_conf_content
+ 
+    - name: Display updated resolv.conf
+      ansible.builtin.debug:
+        msg: "{{ resolv_conf_content.stdout }}"
