@@ -17,8 +17,8 @@
         state: present
     
     - name: Verify changes in resolv.conf
-        ansible.builtin.shell: cat /etc/resolv.conf
-        register: resolv_conf_content
+      ansible.builtin.shell: cat /etc/resolv.conf
+      register: resolv_conf_content
  
     - name: Display updated resolv.conf
       ansible.builtin.debug:
