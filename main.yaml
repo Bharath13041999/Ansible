@@ -16,7 +16,7 @@
         line: "google 8.8.8.8"
         state: present
     
-      - name: Verify changes in resolv.conf
+    - name: Verify changes in resolv.conf
         ansible.builtin.shell: cat /etc/resolv.conf
         register: resolv_conf_content
  
